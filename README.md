@@ -4,9 +4,9 @@ An enhanced portfolio created in 2022, with the use of [Next.js](https://nextjs.
 
 The website only contains 1 static page which is the HomePage.
 
-Visit the website [here]().
+Visit the website [here](https://portfolio-2022-steel-chi.vercel.app/).
 
-## JS Libraries Used
+## JS Libraries
 
 Below are the list of js libraries used for the website:
 
