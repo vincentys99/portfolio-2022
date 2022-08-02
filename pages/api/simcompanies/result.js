@@ -1,7 +1,7 @@
 const dev = process.env.NODE_ENV !== "production";
 const server = dev
   ? "http://localhost:3000"
-  : "https://your_deployment.server.com";
+  : "https://portfolio-2022-steel-chi.vercel.app/";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
