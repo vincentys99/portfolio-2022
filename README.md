@@ -2,7 +2,7 @@ An enhanced portfolio created in 2022, with the use of [Next.js](https://nextjs.
 
 ## Vincent's Portfolio (2022)
 
-The website only contains 1 static page which is the HomePage.
+The website contains 1 static home page and some other hidden pages just for fun.
 
 Visit the website [here](https://portfolio-2022-steel-chi.vercel.app/).
 
