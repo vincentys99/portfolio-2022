@@ -10,10 +10,6 @@
   justify-content: center;
 }
 
-.container:before {
-  content: " 🚧 ";
-}
-
 .container > * {
   margin: 0px;
 }
