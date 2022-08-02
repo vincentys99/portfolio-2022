@@ -13,3 +13,7 @@
 .container > * {
   margin: 0px;
 }
+
+.btnSimcompanies {
+  font-size: 1.5rem;
+}

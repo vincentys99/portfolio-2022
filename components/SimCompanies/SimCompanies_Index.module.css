@@ -1,0 +1,44 @@
+.header {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  max-width: 425px;
+  padding: 1rem;
+  /* border-radius: 25px;
+  border: 1px solid white; */
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formControl {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  color: #e8e8e8;
+  border-radius: .25rem;
+}
+
+.btn {
+  float: right;
+  height: 2rem;
+  padding: 0px 3rem;
+  cursor: pointer;
+}

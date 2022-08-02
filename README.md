@@ -11,6 +11,7 @@ Visit the website [here](https://portfolio-2022-steel-chi.vercel.app/).
 Below are the list of js libraries used for the website:
 
 - [AOS](https://michalsnik.github.io/aos/) - Animate On Scroll Library.
+- [FontAwesome](https://fontawesome.com/) - font and icon toolkit.
 - ...
 
 ## Platform
