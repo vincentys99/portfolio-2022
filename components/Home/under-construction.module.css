@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.container:before {
+  content: " 🚧 ";
+}
+
+.container > * {
+  margin: 0px;
+}
