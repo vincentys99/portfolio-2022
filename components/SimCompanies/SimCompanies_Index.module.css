@@ -41,4 +41,11 @@
   height: 2rem;
   padding: 0px 3rem;
   cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  transform: scale(0.96);
 }

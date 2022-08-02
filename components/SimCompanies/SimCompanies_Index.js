@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,13 +10,43 @@ import classes from "./SimCompanies_Index.module.css";
 export default function SimCompanies_Index() {
   const onSubmit_Handler = async function (event) {
     event.preventDefault();
-    console.log(economyPhase_Ref.current.value);
-    console.log(retailBuildingID_Ref.current.value);
+
+    const economyPhase_entered = economyPhase_Ref.current.value;
+    const buildingID_entered = buildingID_Ref.current.value;
+    const productID_entered = productID_Ref.current.value;
+
+    const reqBody = {
+      economyPhase: economyPhase_entered,
+      buildingID: buildingID_entered,
+      productID: productID_entered,
+    };
+
+    const response = await fetch("/api/simcompanies/result", {
+      method: "POST",
+      body: JSON.stringify(reqBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const getBuildingProducts = async () => {
+    setBuildingProducts(emptyList);
+
+    const buildingID_entered = buildingID_Ref.current.value;
 
     const response = await fetch(
-      `https://www.simcompanies.com/api/v3/0/encyclopedia/buildings/${retailBuildingID_Ref.current.value}/`
+      `/api/simcompanies/building/${buildingID_entered}`
     );
-    console.log(response);
+    const data = await response.json();
+    const buildingProducts = data.doesSell.map((item) => ({
+      id: item.db_letter,
+      value: item.name,
+    }));
+
+    setBuildingProducts(buildingProducts);
   };
 
   useEffect(() => {
@@ -26,7 +56,15 @@ export default function SimCompanies_Index() {
   }, []);
 
   const economyPhase_Ref = useRef();
-  const retailBuildingID_Ref = useRef();
+  const buildingID_Ref = useRef();
+  const productID_Ref = useRef();
+
+  const emptyList = [
+    {
+      id: "",
+      value: "-",
+    },
+  ];
 
   const economyPhases = [
     {
@@ -43,7 +81,7 @@ export default function SimCompanies_Index() {
     },
   ];
 
-  const retailBuildings = [
+  const buildings = [
     {
       id: "G",
       value: "Grocery Store",
@@ -78,6 +116,8 @@ export default function SimCompanies_Index() {
     },
   ];
 
+  const [buildingProducts, setBuildingProducts] = useState(emptyList);
+
   return (
     <>
       <div className={classes.header}>
@@ -107,13 +147,14 @@ export default function SimCompanies_Index() {
             </select>
           </div>
           <div className={classes.formGroup}>
-            <label htmlFor={"retailBuildingID"}>Retail Building</label>
+            <label htmlFor={"buildingID"}>Retail Building</label>
             <select
-              id={"retailBuildingID"}
+              id={"buildingID"}
               className={classes.formControl}
-              ref={retailBuildingID_Ref}
+              ref={buildingID_Ref}
+              onChange={getBuildingProducts}
             >
-              {retailBuildings.map((item) => {
+              {buildings.map((item) => {
                 return (
                   <option key={item.id} value={item.id}>
                     {item.value}
@@ -122,7 +163,23 @@ export default function SimCompanies_Index() {
               })}
             </select>
           </div>
-          <button className={classes.btn}>Generate</button>
+          <div className={classes.formGroup}>
+            <label htmlFor="productID">Product</label>
+            <select
+              id="productID"
+              className={classes.formControl}
+              ref={productID_Ref}
+            >
+              {buildingProducts.map((item) => {
+                return (
+                  <option key={item.id} value={item.id}>
+                    {item.value}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <button className={classes.btn}>Get Result</button>
         </form>
       </div>
     </>
