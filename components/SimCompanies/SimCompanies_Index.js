@@ -51,6 +51,8 @@ export default function SimCompanies_Index() {
     }));
 
     setBuildingProducts(buildingProducts);
+
+    console.log('Product list updated')
   };
 
   useEffect(() => {
