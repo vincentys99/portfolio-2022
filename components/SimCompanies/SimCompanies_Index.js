@@ -11,7 +11,7 @@ export default function SimCompanies_Index() {
   const onSubmit_Handler = async function (event) {
     event.preventDefault();
 
-    console.log('Getting results...')
+    console.log("Getting results...");
 
     const economyPhase_entered = economyPhase_Ref.current.value;
     const buildingID_entered = buildingID_Ref.current.value;
@@ -35,7 +35,7 @@ export default function SimCompanies_Index() {
   };
 
   const getBuildingProducts = async () => {
-    console.log('Getting products...')
+    console.log("Getting products...");
 
     setBuildingProducts(emptyList);
 
@@ -52,7 +52,7 @@ export default function SimCompanies_Index() {
 
     setBuildingProducts(buildingProducts);
 
-    console.log('Product list updated')
+    console.log("Product list updated");
   };
 
   useEffect(() => {
@@ -123,6 +123,10 @@ export default function SimCompanies_Index() {
   ];
 
   const [buildingProducts, setBuildingProducts] = useState(emptyList);
+
+  useEffect(() => {
+    getBuildingProducts(buildings[0].id);
+  }, []);
 
   return (
     <>
