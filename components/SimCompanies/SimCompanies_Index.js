@@ -11,6 +11,8 @@ export default function SimCompanies_Index() {
   const onSubmit_Handler = async function (event) {
     event.preventDefault();
 
+    console.log('Getting results...')
+
     const economyPhase_entered = economyPhase_Ref.current.value;
     const buildingID_entered = buildingID_Ref.current.value;
     const productID_entered = productID_Ref.current.value;
@@ -33,6 +35,8 @@ export default function SimCompanies_Index() {
   };
 
   const getBuildingProducts = async () => {
+    console.log('Getting products...')
+
     setBuildingProducts(emptyList);
 
     const buildingID_entered = buildingID_Ref.current.value;
