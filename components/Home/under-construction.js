@@ -16,7 +16,7 @@ export default function UnderConstruction() {
   return (
     <div className={classes.container}>
       <span data-aos={"fade-down"}>
-        <Link href={"/sim-companies"}>
+        <Link href={"/simcompanies"}>
           <a className={classes.btnSimcompanies}>🚧</a>
         </Link>
       </span>

@@ -1,3 +1,7 @@
 .iconLeft {
   padding-right: 0.2rem;
 }
+
+.link {
+  text-decoration: underline;
+}

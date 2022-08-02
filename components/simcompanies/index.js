@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 import BackToHome_Button from "../ui/btn_backToHome";
 
-import classes from "./SimCompanies_Index.module.css";
+import classes from "./index.module.css";
 
 export default function SimCompanies_Index() {
   const onSubmit_Handler = async function (event) {
@@ -132,6 +132,7 @@ export default function SimCompanies_Index() {
     <>
       <div className={classes.header}>
         <h1 data-aos={"fade-right"}>Sim Companies</h1>
+        <p data-aos={"fade-right"}>{"(my private playground)"}</p>
         <BackToHome_Button />
       </div>
       <div

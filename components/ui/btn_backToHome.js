@@ -10,7 +10,11 @@ import classes from "./btn_backToHome.module.css";
 export default function BackToHome_Button() {
   return (
     <Link href={"/"}>
-      <a data-aos={"fade-down"} data-aos-delay={"1500"}>
+      <a
+        data-aos={"fade-down"}
+        data-aos-delay={"1500"}
+        className={classes.link}
+      >
         <FontAwesomeIcon icon={faCaretLeft} className={classes.iconLeft} />
         return to Home
       </a>
