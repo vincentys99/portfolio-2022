@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import BackToHome_Button from "../ui/btn_backToHome";
 
 import classes from "./index.module.css";
-import GetCookie from "../others/GetCookie";
+import GetCookie from "../others/getCookie";
 
 const getFormOptions = () => {
   const emptyList = [
