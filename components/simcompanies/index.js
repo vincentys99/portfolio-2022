@@ -509,7 +509,16 @@ export default function SimCompanies_Index() {
               />
             </div>
           </div>
-          <button className={classes.btn}>Get Result</button>
+          <button
+            className={classes.btn}
+            type={"button"}
+            onClick={() => {
+              location.reload(true);
+            }}
+          >
+            Reload
+          </button>
+          <button className={`${classes.btn} ${classes.btn_right}`}>Get Result</button>
         </form>
       </div>
       <div
