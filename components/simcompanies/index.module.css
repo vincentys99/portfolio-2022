@@ -134,6 +134,9 @@
   height: 100%;
   max-width: calc(425px - 20px);
   max-height: calc(425px - 20px);
-  overflow: auto;
-  contain: content;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: black;
 }
