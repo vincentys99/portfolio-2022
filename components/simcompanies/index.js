@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import BackToHome_Button from "../ui/btn_backToHome";
 
 import classes from "./index.module.css";
+import GetSessionStorage from "../others/getSessionStorage";
 
 const getFormOptions = () => {
   const emptyList = [
@@ -72,18 +73,6 @@ const getFormOptions = () => {
   const results = { emptyList, economyPhases, buildings, executives };
 
   return results;
-};
-
-const getValue = (name) => {
-  const [value, setValue] = useState("");
-
-  useEffect(() => {
-    if (sessionStorage.getItem(name)) {
-      setValue(sessionStorage.getItem(name));
-    }
-  }, []);
-
-  return value;
 };
 
 export default function SimCompanies_Index() {
@@ -222,7 +211,7 @@ export default function SimCompanies_Index() {
       console.log("Unable to retrieve products list.");
     }
   };
-
+  
   const { emptyList, economyPhases, buildings, executives } = getFormOptions();
 
   const [buildingProducts, setBuildingProducts] = useState(emptyList);
@@ -363,7 +352,7 @@ export default function SimCompanies_Index() {
                 className={classes.formControl}
                 ref={cog_Ref}
                 required
-                defaultValue={getValue("cog")}
+                defaultValue={GetSessionStorage("cog")}
               />
             </div>
             <div className={classes.formGroup}>
@@ -378,7 +367,7 @@ export default function SimCompanies_Index() {
                 className={classes.formControl}
                 ref={quality_Ref}
                 required
-                defaultValue={getValue("quality")}
+                defaultValue={GetSessionStorage("quality")}
               />
             </div>
           </div>
@@ -394,7 +383,7 @@ export default function SimCompanies_Index() {
               className={classes.formControl}
               ref={runtime_Ref}
               required
-              defaultValue={getValue("runtime")}
+              defaultValue={GetSessionStorage("runtime")}
             />
           </div>
           {executives.map((item, index) => {
@@ -443,7 +432,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref1}
-                    defaultValue={getValue(`${item.toLowerCase()}1`)}
+                    defaultValue={GetSessionStorage(`${item.toLowerCase()}1`)}
                   />
                   <input
                     id={`${item}2`}
@@ -453,7 +442,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref2}
-                    defaultValue={getValue(`${item.toLowerCase()}2`)}
+                    defaultValue={GetSessionStorage(`${item.toLowerCase()}2`)}
                   />
                   <input
                     id={`${item}3`}
@@ -463,7 +452,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref3}
-                    defaultValue={getValue(`${item.toLowerCase()}3`)}
+                    defaultValue={GetSessionStorage(`${item.toLowerCase()}3`)}
                   />
                   <input
                     id={`${item}4`}
@@ -473,7 +462,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref4}
-                    defaultValue={getValue(`${item.toLowerCase()}4`)}
+                    defaultValue={GetSessionStorage(`${item.toLowerCase()}4`)}
                   />
                 </div>
               </div>
@@ -491,7 +480,7 @@ export default function SimCompanies_Index() {
                 placeholder="0 ~ 20"
                 className={classes.formControl}
                 ref={totalBuildings_Ref}
-                defaultValue={getValue("totalBuildings")}
+                defaultValue={GetSessionStorage("totalBuildings")}
               />
             </div>
             <div className={classes.formGroup}>
@@ -505,7 +494,7 @@ export default function SimCompanies_Index() {
                 placeholder="0 ~ 9"
                 className={classes.formControl}
                 ref={recBonus_Ref}
-                defaultValue={getValue("recBonus")}
+                defaultValue={GetSessionStorage("recBonus")}
               />
             </div>
           </div>
