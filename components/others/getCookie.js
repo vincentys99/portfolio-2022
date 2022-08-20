@@ -16,7 +16,7 @@ export default function GetCookie(name) {
 
   useEffect(() => {
     setValue(getCookie(name) ?? "");
-  }, []);
+  }, [name]);
 
   return value;
 }

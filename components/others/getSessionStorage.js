@@ -5,7 +5,7 @@ export default function GetSessionStorage(name) {
 
   useEffect(() => {
     setValue(sessionStorage.getItem(name));
-  }, []);
+  }, [name]);
 
   return value;
 }
