@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import BackToHome_Button from "../ui/btn_backToHome";
 
 import classes from "./index.module.css";
-import GetSessionStorage from "../others/getSessionStorage";
+import GetCookie from "../others/GetCookie";
 
 const getFormOptions = () => {
   const emptyList = [
@@ -133,31 +133,42 @@ export default function SimCompanies_Index() {
     const totalBuildings_Ref_value = totalBuildings_Ref.current.value;
     const recBonus_Ref_value = recBonus_Ref.current.value;
 
-    sessionStorage.setItem("economyPhase", economyPhase_Ref_value);
-    sessionStorage.setItem("buildingID", buildingID_Ref_value);
-    sessionStorage.setItem("buildingLvl", buildingLvl_Ref_value);
-    sessionStorage.setItem("resourceID", resourceID_Ref_value);
-    sessionStorage.setItem("cog", cog_Ref_value);
-    sessionStorage.setItem("quality", quality_Ref_value);
-    sessionStorage.setItem("runtime", runtime_Ref_value);
-    sessionStorage.setItem("coo1", coo1_Ref_value);
-    sessionStorage.setItem("coo2", coo2_Ref_value);
-    sessionStorage.setItem("coo3", coo3_Ref_value);
-    sessionStorage.setItem("coo4", coo4_Ref_value);
-    sessionStorage.setItem("cfo1", cfo1_Ref_value);
-    sessionStorage.setItem("cfo2", cfo2_Ref_value);
-    sessionStorage.setItem("cfo3", cfo3_Ref_value);
-    sessionStorage.setItem("cfo4", cfo4_Ref_value);
-    sessionStorage.setItem("cmo1", cmo1_Ref_value);
-    sessionStorage.setItem("cmo2", cmo2_Ref_value);
-    sessionStorage.setItem("cmo3", cmo3_Ref_value);
-    sessionStorage.setItem("cmo4", cmo4_Ref_value);
-    sessionStorage.setItem("cto1", cto1_Ref_value);
-    sessionStorage.setItem("cto2", cto2_Ref_value);
-    sessionStorage.setItem("cto3", cto3_Ref_value);
-    sessionStorage.setItem("cto4", cto4_Ref_value);
-    sessionStorage.setItem("totalBuildings", totalBuildings_Ref_value);
-    sessionStorage.setItem("recBonus", recBonus_Ref_value);
+    function setCookie(name, value) {
+      var days = 365;
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    setCookie("economyPhase", economyPhase_Ref_value);
+    setCookie("buildingID", buildingID_Ref_value);
+    setCookie("buildingLvl", buildingLvl_Ref_value);
+    setCookie("resourceID", resourceID_Ref_value);
+    setCookie("cog", cog_Ref_value);
+    setCookie("quality", quality_Ref_value);
+    setCookie("runtime", runtime_Ref_value);
+    setCookie("coo1", coo1_Ref_value);
+    setCookie("coo2", coo2_Ref_value);
+    setCookie("coo3", coo3_Ref_value);
+    setCookie("coo4", coo4_Ref_value);
+    setCookie("cfo1", cfo1_Ref_value);
+    setCookie("cfo2", cfo2_Ref_value);
+    setCookie("cfo3", cfo3_Ref_value);
+    setCookie("cfo4", cfo4_Ref_value);
+    setCookie("cmo1", cmo1_Ref_value);
+    setCookie("cmo2", cmo2_Ref_value);
+    setCookie("cmo3", cmo3_Ref_value);
+    setCookie("cmo4", cmo4_Ref_value);
+    setCookie("cto1", cto1_Ref_value);
+    setCookie("cto2", cto2_Ref_value);
+    setCookie("cto3", cto3_Ref_value);
+    setCookie("cto4", cto4_Ref_value);
+    setCookie("totalBuildings", totalBuildings_Ref_value);
+    setCookie("recBonus", recBonus_Ref_value);
 
     const reqBody = {
       economyPhase: economyPhase_Ref.current.value,
@@ -211,7 +222,7 @@ export default function SimCompanies_Index() {
       console.log("Unable to retrieve products list.");
     }
   };
-  
+
   const { emptyList, economyPhases, buildings, executives } = getFormOptions();
 
   const [buildingProducts, setBuildingProducts] = useState(emptyList);
@@ -352,7 +363,7 @@ export default function SimCompanies_Index() {
                 className={classes.formControl}
                 ref={cog_Ref}
                 required
-                defaultValue={GetSessionStorage("cog")}
+                defaultValue={GetCookie("cog")}
               />
             </div>
             <div className={classes.formGroup}>
@@ -367,7 +378,7 @@ export default function SimCompanies_Index() {
                 className={classes.formControl}
                 ref={quality_Ref}
                 required
-                defaultValue={GetSessionStorage("quality")}
+                defaultValue={GetCookie("quality")}
               />
             </div>
           </div>
@@ -383,7 +394,7 @@ export default function SimCompanies_Index() {
               className={classes.formControl}
               ref={runtime_Ref}
               required
-              defaultValue={GetSessionStorage("runtime")}
+              defaultValue={GetCookie("runtime")}
             />
           </div>
           {executives.map((item, index) => {
@@ -432,7 +443,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref1}
-                    defaultValue={GetSessionStorage(`${item.toLowerCase()}1`)}
+                    defaultValue={GetCookie(`${item.toLowerCase()}1`)}
                   />
                   <input
                     id={`${item}2`}
@@ -442,7 +453,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref2}
-                    defaultValue={GetSessionStorage(`${item.toLowerCase()}2`)}
+                    defaultValue={GetCookie(`${item.toLowerCase()}2`)}
                   />
                   <input
                     id={`${item}3`}
@@ -452,7 +463,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref3}
-                    defaultValue={GetSessionStorage(`${item.toLowerCase()}3`)}
+                    defaultValue={GetCookie(`${item.toLowerCase()}3`)}
                   />
                   <input
                     id={`${item}4`}
@@ -462,7 +473,7 @@ export default function SimCompanies_Index() {
                     pattern="\d*"
                     className={classes.formControl}
                     ref={ref4}
-                    defaultValue={GetSessionStorage(`${item.toLowerCase()}4`)}
+                    defaultValue={GetCookie(`${item.toLowerCase()}4`)}
                   />
                 </div>
               </div>
@@ -480,7 +491,7 @@ export default function SimCompanies_Index() {
                 placeholder="0 ~ 20"
                 className={classes.formControl}
                 ref={totalBuildings_Ref}
-                defaultValue={GetSessionStorage("totalBuildings")}
+                defaultValue={GetCookie("totalBuildings")}
               />
             </div>
             <div className={classes.formGroup}>
@@ -494,7 +505,7 @@ export default function SimCompanies_Index() {
                 placeholder="0 ~ 9"
                 className={classes.formControl}
                 ref={recBonus_Ref}
-                defaultValue={GetSessionStorage("recBonus")}
+                defaultValue={GetCookie("recBonus")}
               />
             </div>
           </div>
